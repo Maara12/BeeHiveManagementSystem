@@ -1,0 +1,34 @@
+﻿<Window x:Name="Windows" x:Class="BeeHiveManagementSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeeHiveManagementSystem"
+        mc:Ignorable="d"
+        Title="Beehive Management " Height="325" Width="625">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Job Assignments" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="Queen's Report" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Margin="20,20,20,20">
+            <ComboBox x:Name="JobSelector" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,12,0,0" Width="210" Height="30" SelectedIndex="0" SelectionChanged="JobSelector_SelectionChanged">
+                <ListBoxItem Content="NectarCollector"/>
+                <ListBoxItem Content="HoneyManufacturer"/>
+                <ListBoxItem Content="EggCare"/>
+            </ComboBox>
+            <Button x:Name="AssignBeeButton" Content="Assign this Job to a Bee" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,20,0,0" Height="30" Width="210" Click="AssignBeeButton_Click"/>
+        </StackPanel>
+        <TextBox x:Name="statusReport" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Stretch" Grid.RowSpan="2" Margin="20,20,20,20" IsReadOnly ="True"/>
+        <Button x:Name="WorkNextShift" Content="Work the Next Shift" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="210" Height="50" Click="WorkNextShift_Click"/>
+
+
+    </Grid>
+</Window>
