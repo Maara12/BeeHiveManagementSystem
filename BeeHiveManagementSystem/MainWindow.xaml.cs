@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BeeHiveManagementSystem
 {
@@ -21,12 +22,21 @@ namespace BeeHiveManagementSystem
     public partial class MainWindow : Window
     {
         Queen queen = new Queen();
+        DispatcherTimer timer = new DispatcherTimer();
+
         public MainWindow()
         {
             InitializeComponent();
             statusReport.Text = queen.StatusReport;
+            timer.Interval = TimeSpan.FromSeconds(1.5);
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            WorkNextShift_Click(this, new RoutedEventArgs());
+        }
 
         private void JobSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
